@@ -7,18 +7,18 @@ require 'optparse'
 options = {
   :streams => [],
   :most_played => false,
-  :limit => 100
+  :limit => 3
 }
 
 OptionParser.new do |opts|
   opts.banner = "detektor.playlist.rb [options]"
 
   opts.on("-w", "--wort", "Only Wortstream") do |o|
-    options[:streams] << "Wortstream"
+    options[:streams] << DetektorFm::WortStream.new
   end
   
   opts.on("-m", "--musik", "Only Musikstream") do |o|
-    options[:streams] << "Musikstream"
+    options[:streams] << DetektorFm::MusikStream.new
   end
 
   opts.on("-l LIMIT", Integer, "Limit displayed entries") do |limit|
@@ -30,22 +30,37 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-options[:streams] << "Wortstream" << "Musikstream" if options[:streams].empty?
+#if options[:streams].empty?
+  #options[:streams] << DetektorFm::WortStream.new 
+  #options[:streams] << DetektorFm::MusikStream.new 
+#end
 
 
 ### main
-req = DetektorFm::Request.new 
 
-req.playlist(options[:streams], options[:limit]) do |stream,entries|
-  puts stream
-  entries.each do |e|
-    printf "   %20s   %s - %s\n", e[:time], e[:artist], e[:title]
+options[:streams].each do |stream|
+  puts stream.get_name
+  stream.played(options[:limit]) do |time, artist, title|
+    printf "   %20s   %s - %s\n", time, artist, title
+  end
+
+  # most played handling
+  if options[:most_played]
+    puts " Most played artists last 7 days"
+    stream.most_played_artist().each do |a|
+      puts "   " + a
+    end
+
+    puts " Most played artists last 7 days (overall)"
+    DetektorFm::Stream::most_played_artist_overall do |a|
+      puts "   " + a
+    end
   end
 end
 
 if options[:most_played]
-  puts "Most played artists last 7 days"
-  req.most_played_artist().each do |a|
+  puts "Most played artists last 7 days (overall)"
+  DetektorFm::most_played_artist_overall.each do |a|
     puts "   " + a
   end
 end
