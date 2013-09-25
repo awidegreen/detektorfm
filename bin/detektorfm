@@ -50,11 +50,6 @@ options[:streams].each do |stream|
     stream.most_played_artist().each do |a|
       puts "   " + a
     end
-
-    puts " Most played artists last 7 days (overall)"
-    DetektorFm::Stream::most_played_artist_overall do |a|
-      puts "   " + a
-    end
   end
 end
 
