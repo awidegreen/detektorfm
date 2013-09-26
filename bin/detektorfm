@@ -30,11 +30,6 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-#if options[:streams].empty?
-  #options[:streams] << DetektorFm::WortStream.new 
-  #options[:streams] << DetektorFm::MusikStream.new 
-#end
-
 
 ### main
 
