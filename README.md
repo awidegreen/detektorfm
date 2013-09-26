@@ -12,6 +12,8 @@ For example implementation, see `./bin/*`
 
 ## Installation 
 
+GEM IS NOT PUBLISHED YET!
+
 ```
 gem install detektorfm
 ```
