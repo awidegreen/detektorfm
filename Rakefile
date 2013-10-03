@@ -8,10 +8,10 @@ task :build do
   system "gem build detektorfm.gemspec"
 end
 
-#desc "Deploy gem to rubygems.org"
-#task :deploy do
-  #system "gem push detektorfm-#{VERSION.gsub( /\n/, "" )}.gem"
-#end
+desc "Deploy gem to rubygems.org"
+task :deploy do
+  system "gem push detektorfm-#{VERSION.gsub( /\n/, "" )}.gem"
+end
 
 desc "Tag git repo with release"
 task :tag do
