@@ -12,8 +12,6 @@ For example implementations, see awidegreen/detektorfm-tools
 
 ## Installation 
 
-GEM IS NOT PUBLISHED YET!
-
 ```
 gem install detektorfm
 ```
