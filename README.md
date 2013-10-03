@@ -7,7 +7,7 @@ Features:
 * most played artist in last 7 weeks
 * ... to be extended ... 
 
-For example implementation, see `./bin/*`
+For example implementations, see awidegreen/detektorfm-tools
 
 
 ## Installation 
@@ -18,23 +18,12 @@ gem install detektorfm
 
 ## Usage
 
-Run `detektorfm -h` for help.
+Get an instance of  `DetektorFm::MusikStream` or `DetektorFm::WortStream` and 
+start querying the playlist with `played()` or get specific stream url
+`get_stream_url`.
 
-```
-# query last played songs from wortstream and musikstream
-detektorfm -m -w
 
-# query last 15 last played songs from musikstream
-detektorfm -m -l15
-
-# query most played artists form the last 7 days, overall (both streams)
-detektorfm -p
-```
-
-If you cloned the repo directly run `ruby -Ilib bin/detektorfm` from cloned 
-directory.
-
-## License 
+## License                                                            
 Licensed under BSD (2-Clause), see LICENSE.txt
 
 

@@ -13,13 +13,11 @@ Gem::Specification.new do |s|
   s.description  = 'Interfacing (Querying) the detektor.fm (webradio) website.'
   s.authors      = ["Armin Widegreen"]
   s.email        = 'armin.widegreen@gmail.com'
-  s.files        = ['bin/detektorfm']
+  s.files        = ['lib/detektorfm.rb']
   s.homepage     = 'http://github.com/awidegreen/detektorfm'
   s.license      = 'BSD (2-Clause)'
   s.require_path = ['lib']
-  s.files        = FileList['**/**/*'].exclude /.git|.svn|.DS_Store/
-  s.bindir       = 'bin'
-  s.executables  = ['detektorfm']
+
   s.add_runtime_dependency 'nokogiri'
 end
 
