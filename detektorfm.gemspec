@@ -9,14 +9,21 @@ Gem::Specification.new do |s|
   s.name         = 'detektorfm'
   s.version      = File.read('VERSION').strip
   s.date         = '2013-09-24'
-  s.summary      = 'detektorfm'
+  s.summary      = 'detektorfm library'
   s.description  = 'Interfacing (Querying) the detektor.fm (webradio) website.'
   s.authors      = ["Armin Widegreen"]
   s.email        = 'armin.widegreen@gmail.com'
-  s.files        = ['lib/detektorfm.rb']
+  s.files        = [
+    "lib/detektorfm.rb",
+    "detektorfm.gemspec",
+    "Rakefile",
+    "VERSION",
+    "README.md",
+    "LICENSE.txt"
+  ]
   s.homepage     = 'http://github.com/awidegreen/detektorfm'
   s.license      = 'BSD (2-Clause)'
-  s.require_path = ['lib']
+  s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'nokogiri'
 end
