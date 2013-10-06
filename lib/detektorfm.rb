@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby 
+require "detektorfm/version"
 
 require 'nokogiri'
 require 'open-uri'

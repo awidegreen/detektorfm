@@ -1,22 +1,30 @@
 require "rubygems"
 require "rake"
-
-VERSION = File.read(File.join(".", "VERSION"))
+require 'detektorfm/version'
 
 desc "Build gem from gemspec"
 task :build do
   system "gem build detektorfm.gemspec"
 end
 
+desc "Install locally build gem"
+task :install do
+  ["build"].each do |t|
+    system "gem install ./detektorfm-#{DetektorFm::VERSION}.gem"
+  end
+end
+
 desc "Deploy gem to rubygems.org"
 task :deploy do
-  system "gem push detektorfm-#{VERSION.gsub( /\n/, "" )}.gem"
+  ["build"].each do |t|
+    system "gem push detektorfm-#{DetektorFm::VERSION}.gem"
+  end
 end
 
 desc "Tag git repo with release"
 task :tag do
-  system "git tag v#{VERSION}"
-  puts "Tag v#{VERSION} created"
+  system "git tag v#{DetektorFm::VERSION}"
+  puts "Tag v#{DetektorFm::VERSION} created"
 end
 
 desc "Push tags to github"
