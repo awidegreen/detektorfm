@@ -1,13 +1,14 @@
 # detektorfm
 
-Library for the *detektor.fm* website.
+Library for the **detektor.fm** website.
 
 Features:
+
 * querying last played songs 
 * most played artist in last 7 weeks
 * ... to be extended ... 
 
-For example implementations, see awidegreen/detektorfm-tools
+For example implementations, see [awidegreen/detektorfm-tools](https://github.com/awidegreen/detektorfm-tools)
 
 ## Installation
 
@@ -27,7 +28,18 @@ Or install it yourself as:
 
 Get an instance of  `DetektorFm::MusikStream` or `DetektorFm::WortStream` and 
 start querying the playlist with `played()` or get specific stream url
-`get_stream_url`.
+`get_stream_url
+
+**Example** Query last 42 played songs from musikstream
+```
+  require "detektorfm"
+  
+  stream = DetektorFm::MusikStream.new
+  stream.played(42) do |time, artist, title|
+    printf "   %20s   %s - %s\n", time, artist, title
+  end
+```
+
 
 ## Contributing
 
