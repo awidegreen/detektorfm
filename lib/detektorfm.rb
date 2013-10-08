@@ -39,6 +39,10 @@ module DetektorFm
       return artists
     end
 
+    def get_stream_key
+      ""
+    end
+
     def get_playlist_url
       "#{@@PLAYLIST_URL}/#{get_stream_key}"
     end
