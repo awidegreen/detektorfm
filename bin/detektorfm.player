@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby 
+
+require 'detektorfm'
+require 'optparse'
+
+### options
+options = { }
+
+g_optparser = OptionParser.new do |opts|
+  opts.banner = "detektor.player [options]"
+
+  opts.on("-t", "--type", "Stream type") do |o|
+    options[:stream_type] = o
+  end
+end
+
+sub_cmds = {
+  "musik" => Proc.new { options[:stream] = DetektorFm::MusikStream.new } ,
+  "wort"  => Proc.new { options[:stream] = DetektorFm::WortStream.new }
+}
+
+g_optparser.order!
+command = ARGV.shift
+if sub_cmds.has_key?(command)
+  sub_cmds[command].call
+else 
+  puts "That subcommand does not exists!"
+  exit
+end
+
+begin 
+  stream = options[:stream]
+  player_pid = Process.spawn("mplayer #{stream.get_stream_url} >& /dev/null")
+  Process.detach(player_pid)
+  puts "Player started with #{stream.get_name}!"
+  loop do 
+    stream.played(1) do |time, a, title|
+      puts time + ": " + a + " - " + title
+    end
+    sleep 120
+  end
+rescue SystemExit, Interrupt 
+  Process.kill("KILL", player_pid)
+  puts "Player killed!"
+end

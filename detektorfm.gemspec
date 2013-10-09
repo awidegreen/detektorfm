@@ -6,9 +6,8 @@ require 'detektorfm/version'
 Gem::Specification.new do |s|
   s.name         = 'detektorfm'
   s.version       = DetektorFm::VERSION
-  s.date         = '2013-09-24'
-  s.summary      = 'detektorfm library'
-  s.description  = 'Interfacing (Querying) the detektor.fm (webradio) website.'
+  s.summary      = %q{detektorfm library and tools}
+  s.description  = %q{Interfacing (Querying) the detektor.fm (webradio) website.}
   s.authors      = ["Armin Widegreen"]
   s.email        = 'armin.widegreen@gmail.com'
   s.homepage     = 'http://github.com/awidegreen/detektorfm'

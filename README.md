@@ -2,13 +2,16 @@
 
 Library for the **detektor.fm** website.
 
+The gem includes the following executables:
+
+* detektorfm.player 
+* detektorfm.playlist
+
 Features:
 
 * querying last played songs 
 * most played artist in last 7 weeks
 * ... to be extended ... 
-
-For example implementations, see [awidegreen/detektorfm-tools](https://github.com/awidegreen/detektorfm-tools)
 
 ## Installation
 
@@ -24,7 +27,7 @@ Or install it yourself as:
 
     $ gem install detektorfm
 
-## Usage
+## Library usage
 
 Get an instance of  `DetektorFm::MusikStream` or `DetektorFm::WortStream` and 
 start querying the playlist with `played()` or get specific stream url
@@ -40,6 +43,37 @@ start querying the playlist with `played()` or get specific stream url
   end
 ```
 
+## Executables
+Some reference implementations.
+
+Use `-h` for help. 
+
+### detektorfm.playlist
+
+Query last played songs (default 3) from wortstream and musikstream:
+
+    detektorfm.playlist -m -w
+
+Query last 15 last played songs from musikstream:
+
+    detektorfm.playlist -m -l15
+
+Query most played artists form the last 7 days, overall (both streams)
+
+    detektorfm.playlist -p
+
+
+### detektorfm.player
+
+Requires *mplayer* to be installed.
+
+Play the musikstream 
+
+    detektorfm.player musik
+
+Play the wortstream 
+
+    detektorfm.player wort
 
 ## Contributing
 
@@ -51,7 +85,6 @@ start querying the playlist with `played()` or get specific stream url
 
 ## License                                                            
 Licensed under BSD (2-Clause), see LICENSE.txt
-
 
 
 [awidegreen](http://github.com/awidegreen)
